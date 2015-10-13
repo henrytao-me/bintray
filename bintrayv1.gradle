@@ -1,0 +1,66 @@
+/*
+ * Copyright 2015 "Henry Tao <hi@henrytao.me>"
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+apply plugin: "com.jfrog.bintray"
+
+version = rootProject.ext.bintray.libraryVersion
+
+task sourcesJar(type: Jar) {
+  from android.sourceSets.main.java.srcDirs
+  classifier = "sources"
+}
+
+task javadoc(type: Javadoc) {
+  source = android.sourceSets.main.java.srcDirs
+  classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+  classifier = "javadoc"
+  from javadoc.destinationDir
+}
+artifacts {
+  archives javadocJar
+  archives sourcesJar
+}
+
+// Bintray
+Properties properties = new Properties()
+properties.load(project.rootProject.file("local.properties").newDataInputStream())
+
+bintray {
+  user = properties.getProperty("bintray.user")
+  key = properties.getProperty("bintray.apikey")
+
+  configurations = ["archives"]
+  pkg {
+    repo = rootProject.ext.bintray.bintrayRepo
+    name = rootProject.ext.bintray.bintrayName
+    desc = rootProject.ext.bintray.libraryDescription
+    websiteUrl = rootProject.ext.bintray.siteUrl
+    vcsUrl = rootProject.ext.bintray.gitUrl
+    licenses = rootProject.ext.bintray.allLicenses
+    publish = true
+    publicDownloadNumbers = true
+    version {
+      desc = rootProject.ext.bintray.libraryDescription
+      gpg {
+        sign = true //Determines whether to GPG sign the files. The default is false
+        passphrase = properties.getProperty("bintray.gpg.password") //Optional. The passphrase for GPG signing
+      }
+    }
+  }
+}
