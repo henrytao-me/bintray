@@ -4,6 +4,10 @@ The easiest way to publish your library to bintray.
 
 This library is based on https://github.com/nuuneoi/JCenter but modified to have configuration file. 
 
+## Example
+
+Check out the example at https://github.com/henrytao-me/bootstrap-android-library
+
 
 ## Usage
 
@@ -27,27 +31,27 @@ classpath "com.github.dcendents:android-maven-gradle-plugin:1.3"
 ```
 ext {
   bintray = [
-      bintrayRepo       : "maven",
-      bintrayName       : "smooth-app-bar-layout",
+      bintrayRepo       : "xxx",
+      bintrayName       : "xxx",
 
-      publishedGroupId  : "me.henrytao",
-      libraryName       : "SmoothAppBarLayout",
-      artifact          : "smooth-app-bar-layout",
+      publishedGroupId  : "xxx",
+      libraryName       : "xxx",
+      artifact          : "xxx",
 
-      libraryDescription: "Smooth version of Google Support Design AppBarLayout",
+      libraryDescription: "xxx",
 
-      siteUrl           : "https://github.com/henrytao-me/smooth-app-bar-layout",
-      gitUrl            : "https://github.com/henrytao-me/smooth-app-bar-layout.git",
+      siteUrl           : "xxx",
+      gitUrl            : "xxx",
 
-      libraryVersion    : rootProject.ext.android.versionName,
+      libraryVersion    : "xxx",
 
-      developerId       : "henrytao",
-      developerName     : "Henry Tao",
-      developerEmail    : "hi@henrytao.me",
+      developerId       : "xxx",
+      developerName     : "xxx",
+      developerEmail    : "xxx",
 
-      licenseName       : "The Apache Software License, Version 2.0",
-      licenseUrl        : "http://www.apache.org/licenses/LICENSE-2.0.txt",
-      allLicenses       : ["Apache-2.0"]
+      licenseName       : "xxx",
+      licenseUrl        : "xxx",
+      allLicenses       : ["xxx"]
   ]
 }
 ```
