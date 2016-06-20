@@ -17,6 +17,7 @@ Check out the example at https://github.com/henrytao-me/bootstrap-android-librar
 bintray.apikey=xxx
 bintray.user=xxx
 bintray.gpg.password=xxx
+bintray.userOrg=xxx
 ```
 
 ### 2. Add dependencies to project gradle

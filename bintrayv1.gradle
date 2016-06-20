@@ -55,6 +55,7 @@ bintray {
     licenses = rootProject.ext.bintray.allLicenses
     publish = true
     publicDownloadNumbers = true
+    userOrg = properties.getProperty("bintray.userOrg")
     version {
       desc = rootProject.ext.bintray.libraryDescription
       gpg {
